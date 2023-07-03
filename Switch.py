@@ -43,13 +43,6 @@ layout1 = [
     get_account_buttons()
 ]
 
-layout2 = [
-    [sg.Text('Account Type:', size=(12, 1)), sg.Input(key='-ACCOUNT_TYPE-', size=(20, 1))],
-    [sg.Text('Email:', size=(12, 1)), sg.Input(key='-EMAIL-', size=(20, 1))],
-    [sg.Text('Username:', size=(12, 1)), sg.Input(key='-USERNAME-', size=(20, 1))],
-    [sg.Button('Add', key='-WRITE_ACCOUNT-', size=(10, 1))]
-]
-
 # Create the window
 window = sg.Window('Git Account Switcher', layout1, size=(550,200))
 
@@ -88,6 +81,7 @@ while True:
             get_account_buttons()
         ]
 
+        window.close()
         window = sg.Window('Git Account Switcher', layout3, size=(550,200))
 
 
@@ -105,6 +99,14 @@ while True:
         if len(accounts) > 2:
             sg.popup("Account Limit Reached", "You have reached the limit of accounts that can be added at once.")
         else:   
+            layout2 = [
+                [sg.Text('Account Type:', size=(12, 1)), sg.Input(key='-ACCOUNT_TYPE-', size=(20, 1))],
+                [sg.Text('Email:', size=(12, 1)), sg.Input(key='-EMAIL-', size=(20, 1))],
+                [sg.Text('Username:', size=(12, 1)), sg.Input(key='-USERNAME-', size=(20, 1))],
+                [sg.Button('Add', key='-WRITE_ACCOUNT-', size=(10, 1))]
+            ]
+            
+            window.close()
             window = sg.Window('Git Account Switcher', layout2, size=(300,125))
 
     elif event == '-WRITE_ACCOUNT-':
@@ -133,6 +135,7 @@ while True:
             get_account_buttons()
         ]
 
+        window.close()
         window = sg.Window('Git Account Switcher', layout3, size=(550,200))
 
     elif event == '-REMOVE_ACCOUNT-':
@@ -157,6 +160,7 @@ while True:
             get_account_buttons()
         ]
 
+        window.close()
         window = sg.Window('Git Account Switcher', layout4, size=(550,200))
 
 # Close the window
